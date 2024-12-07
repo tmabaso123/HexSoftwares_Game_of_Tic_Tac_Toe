@@ -97,3 +97,37 @@ def display_word_progress(word_progress):
 
 def display_num_of_chances_remaining(number_of_guesses):
     print(f"you have {number_of_guesses} chances remaining!")
+
+def run_hangman():
+
+    number_of_guesses = 6
+    guess_history = []
+    word = select_random_word_from_words(words)
+    print(word)
+    word_progress = ["_", "_", "_", "_", "_"]
+
+    while number_of_guesses > 0:
+        display_word_progress(word_progress)
+        print(display_hangman(number_of_guesses))
+        guess = guess_the_letter()
+        index = get_index_of_guess(guess, word)
+
+        if guess not in guess_history and guess in word:
+            word_progress[index] = guess
+
+            separator = ''
+            if separator.join(word_progress) == word:
+                print(f"congrats you won queen! the word is {word.upper()}!")
+                break
+
+        elif guess not in word or (guess in guess_history and guess in word):
+            number_of_guesses -= 1
+
+        guess_history.append(guess)
+        display_num_of_chances_remaining(number_of_guesses)
+
+    if number_of_guesses == 0:
+        print(display_hangman(number_of_guesses))
+        print("sorry you failed queen. hangman is dead")
+        print(f"the word was: {word.upper()}")
+              
