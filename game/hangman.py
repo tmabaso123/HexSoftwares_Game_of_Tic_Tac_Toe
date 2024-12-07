@@ -89,3 +89,8 @@ def display_hangman(number_of_guesses):
      |
 ======
     """
+
+def display_word_progress(word_progress):
+    for item in word_progress:
+        print(item, end=" ")
+    print()
