@@ -163,6 +163,10 @@ def display_word_progress(word_progress):
 
 def display_num_of_chances_remaining(number_of_guesses):
     """
+    Displays the number of chances remaining for the player.
+
+    Args:
+        number_of_guesses (int): The number of guesses left.
     """
     print(f"you have {number_of_guesses} chances remaining!")
 
