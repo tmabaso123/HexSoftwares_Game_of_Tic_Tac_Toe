@@ -4,6 +4,13 @@ def read_file(file_name):
     file = open(file_name,'r')
     return file.readlines()
 
+def ask_file_name():
+    file_name = input("Words file? [leave empty to use words.txt] : ")
+    if not file_name:
+        return 'short_words.txt'
+    return file_name
+
+
 def select_random_word_from_words(words):
     return random.choice(words)
 
