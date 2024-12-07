@@ -171,6 +171,10 @@ def display_num_of_chances_remaining(number_of_guesses):
     print(f"you have {number_of_guesses} chances remaining!")
 
 def run_hangman():
+    """
+    Runs the Hangman game, allowing the user to guess letters until they either
+    guess the word correctly or run out of chances.
+    """
     number_of_guesses = 6
     guess_history = []
     words_file = ask_file_name()
