@@ -17,3 +17,75 @@ def get_index_of_guess(guess, word):
             break
 
     return index
+
+def display_hangman(number_of_guesses):
+    if number_of_guesses == 0:
+        return """
+ +---+
+ |   |    
+ 0   |
+/|\\  |
+/ \\  |
+     |
+======
+    """
+    elif number_of_guesses == 1:
+        return """
+ +---+
+ |   |    
+ 0   |
+/|\\  |
+/    |
+     |
+======
+    """
+    elif number_of_guesses == 2:
+        return """
+ +---+
+ |   |    
+ 0   |
+/|\\  |
+     |
+     |
+======
+    """
+    elif number_of_guesses == 3:
+        return """
+ +---+
+ |   |    
+ 0   |
+/|   |
+     |
+     |
+======
+    """
+    elif number_of_guesses == 4:
+        return """
+ +---+
+ |   |    
+ 0   |
+/    |
+     |
+     |
+======
+    """
+    elif number_of_guesses == 5:
+        return """
+ +---+
+ |   |    
+ 0   |
+     |
+     |
+     |
+======
+    """
+    elif number_of_guesses == 6:
+        return """
+ +---+
+ |   |    
+     |
+     |
+     |
+     |
+======
+    """
