@@ -103,7 +103,7 @@ def run_hangman():
     number_of_guesses = 6
     guess_history = []
     word = select_random_word_from_words(words)
-    print(word)
+    # print(word)
     word_progress = ["_", "_", "_", "_", "_"]
 
     while number_of_guesses > 0:
@@ -117,7 +117,7 @@ def run_hangman():
 
             separator = ''
             if separator.join(word_progress) == word:
-                print(f"congrats you won queen! the word is {word.upper()}!")
+                print(f"congrats you won! the word is {word.upper()}!")
                 break
 
         elif guess not in word or (guess in guess_history and guess in word):
@@ -128,6 +128,11 @@ def run_hangman():
 
     if number_of_guesses == 0:
         print(display_hangman(number_of_guesses))
-        print("sorry you failed queen. hangman is dead")
+        print("sorry you failed. hangman is dead")
         print(f"the word was: {word.upper()}")
               
+
+if __name__ == "__main__":
+    print("WELCOME! YOU HAVE 6 CHANCES TO GUESS THE WORD!")
+    print("_______________________________________________")
+    run_hangman()
