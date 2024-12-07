@@ -151,11 +151,19 @@ def display_hangman(number_of_guesses):
     """
 
 def display_word_progress(word_progress):
+    """
+    Displays the current progress of the word being guessed.
+
+    Args:
+        word_progress (list): A list representing the guessed state of the word.
+    """
     for item in word_progress:
         print(item, end=" ")
     print()
 
 def display_num_of_chances_remaining(number_of_guesses):
+    """
+    """
     print(f"you have {number_of_guesses} chances remaining!")
 
 def run_hangman():
