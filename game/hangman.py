@@ -1,6 +1,8 @@
 import random
 
-words = ["beach", "squid", "laugh", "grapes", "ground"]
+def read_file(file_name):
+    file = open(file_name,'r')
+    return file.readlines()
 
 def select_random_word_from_words(words):
     return random.choice(words)
