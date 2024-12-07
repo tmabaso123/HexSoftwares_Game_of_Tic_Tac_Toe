@@ -7,7 +7,7 @@ def read_file(file_name):
 def ask_file_name():
     file_name = input("Words file? [leave empty to use words.txt] : ")
     if not file_name:
-        return 'short_words.txt'
+        return 'words.txt'
     return file_name
 
 
@@ -108,25 +108,26 @@ def display_num_of_chances_remaining(number_of_guesses):
     print(f"you have {number_of_guesses} chances remaining!")
 
 def run_hangman():
-
     number_of_guesses = 6
     guess_history = []
-    word = select_random_word_from_words(words)
-    # print(word)
-    word_progress = ["_", "_", "_", "_", "_"]
+    words_file = ask_file_name()
+    words = read_file(words_file)
+    word = select_random_word_from_words(words).strip()  # Strip newline characters
+    word_progress = ["_"] * len(word)  # Match the length of the word dynamically
 
     while number_of_guesses > 0:
         display_word_progress(word_progress)
         print(display_hangman(number_of_guesses))
         guess = guess_the_letter()
-        index = get_index_of_guess(guess, word)
 
         if guess not in guess_history and guess in word:
-            word_progress[index] = guess
+            for i, letter in enumerate(word):  # Update all occurrences of the guessed letter
+                if letter == guess:
+                    word_progress[i] = guess
 
-            separator = ''
-            if separator.join(word_progress) == word:
-                print(f"congrats you won! the word is {word.upper()}!")
+            guessed_word = ''.join(word_progress)
+            if guessed_word == word:  # Check if the word is complete
+                print(f"Congrats, you won! The word is {word.upper()}!")
                 break
 
         elif guess not in word or (guess in guess_history and guess in word):
@@ -137,11 +138,14 @@ def run_hangman():
 
     if number_of_guesses == 0:
         print(display_hangman(number_of_guesses))
-        print("sorry you failed. hangman is dead")
-        print(f"the word was: {word.upper()}")
+        print("Sorry, you failed. Hangman is dead.")
+        print(f"The word was: {word.upper()}")
               
 
 if __name__ == "__main__":
     print("WELCOME! YOU HAVE 6 CHANCES TO GUESS THE WORD!")
     print("_______________________________________________")
     run_hangman()
+
+
+
